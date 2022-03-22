@@ -7,7 +7,7 @@
     "type": "module",
     "scripts": {
         "build": "babel src --out-dir dist",
-        "test": "NODE_ENV=testing jest --forceExit --detectOpenHandles  --silent",
+        "test": "set NODE_ENV=testing&& node --experimental-vm-modules node_modules/jest/bin/jest.js --forceExit --detectOpenHandles --silent",
         "test-routes": "npm run test -t router",
         "test-models": "npm run test -t model",
         "test-controllers": "npm run test -t controllers",
@@ -20,7 +20,9 @@
         "verbose": true,
         "testURL": "http://localhost/",
         "testEnvironment": "node",
-        "setupTestFrameworkScriptFile": "<rootDir>/test-db-setup.js",
+        "setupFilesAfterEnv": [
+            "<rootDir>/test-db-setup.js"
+        ],
         "testPathIgnorePatterns": [
             "dist/"
         ],
@@ -28,6 +30,7 @@
     },
     "devDependencies": {
         "cross-env": "^7.0.3",
+        "cuid": "^2.1.8",
         "jest": "^27.5.1",
         "mock-req-res": "^1.2.0",
         "nodemon": "^2.0.15",
