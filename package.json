@@ -7,11 +7,12 @@
     "type": "module",
     "scripts": {
         "build": "babel src --out-dir dist",
-        "test": "set NODE_ENV=testing&& node --experimental-vm-modules node_modules/jest/bin/jest.js --forceExit --detectOpenHandles --silent",
+        "test": "set NODE_ENV=testing&& node --experimental-vm-modules node_modules/jest/bin/jest.js --forceExit --detectOpenHandles --silent --testNamePattern3=controllers",
         "test-routes": "npm run test -t router",
         "test-models": "npm run test -t model",
-        "test-controllers": "npm run test -t controllers",
+        "test-controllers": "npm run test ",
         "test-auth": "npm run test -t Authentication:",
+        "test-crud": "npm run test -t crud",
         "dev": "nodemon --exec npm run restart",
         "restart": "rimraf dist && cp -a src/. dist/&& npm run start",
         "start": "node --es-module-specifier-resolution=node --trace-warnings dist/index.js"

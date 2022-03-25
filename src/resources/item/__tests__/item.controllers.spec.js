@@ -1,20 +1,18 @@
-import { controllers } from '../item.controllers';
-import _ from 'lodash';
+import controllers from '../item.controllers'
+import isFunction from 'lodash/isFunction'
 
 describe('item controllers', () => {
-
     test('has crud controllers', () => {
-        const crudMethods = [
-            'getOne',
-            'getMany',
-            'createOne',
-            'removeOne',
-            'updateOne'
-        ]
-        const ctrls = controllers();
-
-        crudMethods.forEach(name =>
-            expect(_.isFunction(ctrls[name])).toBe(true)
-        )
+      const crudMethods = [
+        'getOne',
+        'getMany',
+        'createOne',
+        'removeOne',
+        'updateOne'
+      ]
+  
+      crudMethods.forEach(name =>
+        expect(isFunction(controllers[name])).toBe(true)
+      )
     })
-})
+  })
